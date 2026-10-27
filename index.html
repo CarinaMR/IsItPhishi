@@ -29,12 +29,19 @@
       font-family: 'Silkscreen', monospace;
       font-size: clamp(3rem, 11vw, 7rem);
       font-weight: 400;
-      letter-spacing: 0.04em;
+      letter-spacing: 1px;
       line-height: 1;
       -webkit-text-stroke: 1px #1ab4df;
       text-shadow: 0 0 8px rgb(40 199 235 / 25%);
     }
 
+    p{
+      margin: 0;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-size: small;
+      letter-spacing: 1px;
+    }  
     .welcome {
       display: flex;
       align-items: center;
@@ -175,6 +182,11 @@
       <div class="welcome-text">Welcome!</div>
     </section>
 
+    <p>
+      How it works: Paste your link and click analyze. Our program will take care of the hard work and provide your with a risk score and risk level
+      Additional you can select more info to see the breakdown of how the link was scored and what malicious actors were found.
+    </p>
+    
     <form id="analyze-form">
       <label for="link">Link to check</label>
       <input
