@@ -34,7 +34,11 @@
       -webkit-text-stroke: 1px #1ab4df;
       text-shadow: 0 0 8px rgb(40 199 235 / 25%);
     }
-
+    .container {
+      display: flex;
+      justify-content: left;
+      height: 100px;
+    }
     p{
       margin: 0;
       color: #fff;
@@ -182,11 +186,13 @@
       <div class="welcome-text">Welcome!</div>
     </section>
 
-    <p>
-      How it works: Paste your link and click analyze. Our program will take care of the hard work and provide your with a risk score and risk level
-      Additional you can select more info to see the breakdown of how the link was scored and what malicious actors were found.
-    </p>
-    
+    <div class="container">
+      <p>
+        How it works: Paste your link and click analyze. Our program will take care of the hard work and provide your with a risk score and risk level
+        Additional you can select more info to see the breakdown of how the link was scored and what malicious actors were found.
+      </p>
+    </div>
+      
     <form id="analyze-form">
       <label for="link">Link to check</label>
       <input
