@@ -1,16 +1,209 @@
-<html>
-  <head>
-    <style>
-      body{
-        background-image: url("Web Background.jpeg"); /* vertical light to dark blue gradient */
-        background-size: cover; /* fills the area */
-        background-attachment: fixed; 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Is It Phishi?</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      padding: 42px;
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #1260a0 0%, #063469 55%, #001139 100%);
+    }
+
+    main {
+      width: min(100%, 1000px);
+    }
+
+    h1 {
+      margin: 0 0 70px;
+      color: #72e5f5;
+      font-family: "Courier New", monospace;
+      font-size: clamp(3rem, 11vw, 7rem);
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      line-height: 1;
+      -webkit-text-stroke: 1px #1ab4df;
+      text-shadow: 0 0 8px rgb(40 199 235 / 25%);
+    }
+
+    .welcome {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 145px;
+    }
+
+    .avatar {
+      display: grid;
+      width: 92px;
+      height: 92px;
+      flex: 0 0 92px;
+      place-items: center;
+      overflow: hidden;
+      border: 2px solid #111;
+      border-radius: 50%;
+      background: #dedede;
+    }
+
+    .welcome-text {
+      font-family: "Arial Narrow", Impact, sans-serif;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+    }
+
+    form {
+      width: min(100%, 790px);
+      margin-left: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    input {
+      width: 100%;
+      min-height: 60px;
+      padding: 0 32px;
+      border: 0;
+      border-radius: 999px;
+      outline: none;
+      background: #e4e4e4;
+      color: #172033;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.15rem;
+    }
+
+    input:focus {
+      box-shadow: 0 0 0 4px rgb(105 222 246 / 55%);
+    }
+
+    input::placeholder {
+      color: #666;
+      opacity: 1;
+    }
+
+    button {
+      min-width: 174px;
+      margin-top: 28px;
+      padding: 10px 30px;
+      border: 4px solid #7975ff;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #ff9b9e, #f57984);
+      color: #fff;
+      cursor: pointer;
+      font-size: 1.1rem;
+    }
+
+    button:hover {
+      filter: brightness(1.08);
+    }
+
+    button:focus-visible {
+      outline: 3px solid white;
+      outline-offset: 4px;
+    }
+
+    .message {
+      width: min(100%, 790px);
+      margin: 22px 0 0 20px;
+      color: #fff;
+      line-height: 1.5;
+    }
+
+    .message:empty {
+      display: none;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 28px 22px;
       }
-    </style>
-  </head>
-  <Body>
-    <h1>Is It Phishi</h1>
-    <p> Welcome!</p>
-    <p> Paste your link bellow</p>
-  </Body>
+
+      h1 {
+        margin-bottom: 48px;
+      }
+
+      .welcome {
+        gap: 16px;
+        margin-bottom: 90px;
+      }
+
+      .avatar {
+        width: 68px;
+        height: 68px;
+        flex-basis: 68px;
+      }
+
+      form,
+      .message {
+        margin-left: 0;
+      }
+
+      input {
+        padding: 0 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Is It Phishi?</h1>
+
+    <section class="welcome" aria-label="Welcome">
+      <div class="avatar" aria-hidden="true">
+        <svg viewBox="0 0 100 100" width="76" height="76">
+          <circle cx="50" cy="34" r="20" fill="#fff"/>
+          <path d="M12 94c3-23 18-35 38-35s35 12 38 35" fill="#fff"/>
+        </svg>
+      </div>
+      <div class="welcome-text">Welcome Back Jane!</div>
+    </section>
+
+    <form id="analyze-form">
+      <label for="link">Link to check</label>
+      <input
+        id="link"
+        name="link"
+        type="text"
+        placeholder="Paste your link here"
+        autocomplete="url"
+        spellcheck="false"
+      >
+      <button type="submit">Analyze</button>
+    </form>
+
+    <p class="message" id="message" role="status" aria-live="polite"></p>
+  </main>
+
+  <script>
+    const form = document.querySelector("#analyze-form");
+    const linkInput = document.querySelector("#link");
+    const message = document.querySelector("#message");
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const link = linkInput.value.trim();
+
+      if (!link) {
+        message.textContent = "Paste a link first.";
+        linkInput.focus();
+        return;
+      }
+
+      message.textContent =
+        "This is a visual demo; it does not verify links. Don’t enter passwords or personal information on a site unless you trust it.";
+    });
+  </script>
+</body>
 </html>
