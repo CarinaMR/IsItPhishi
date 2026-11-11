@@ -6,6 +6,6 @@ import java.io.IOException;
 public class Main extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        );
+        String link = request.getParameter("link");//Get Input
     }
 }
