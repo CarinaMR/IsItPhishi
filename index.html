@@ -197,14 +197,15 @@
     <form id="analyze-form">
       <label for="link">Link to check</label>
       <input
-        id="link"
-        name="link"
+        id="urlInput"
+        name="urlInput"
         type="text"
         placeholder="Paste your link here"
         autocomplete="url"
         spellcheck="false"
       >
       <button type="submit">Analyze</button>
+      <pre id="results">
     </form>
 
     <p class="message" id="message" role="status" aria-live="polite"></p>
