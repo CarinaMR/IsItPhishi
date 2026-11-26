@@ -211,24 +211,40 @@
   </main>
 
   <script>
-    const form = document.querySelector("#analyze-form");
-    const linkInput = document.querySelector("#link");
-    const message = document.querySelector("#message");
 
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
+async function analyzeUrl() {
 
-      const link = linkInput.value.trim();
+    const url =
+        document.getElementById(
+            "urlInput"
+        ).value;
 
-      if (!link) {
-        message.textContent = "Paste a link first.";
-        linkInput.focus();
-        return;
-      }
+    const response =
+        await fetch(
+            "http://localhost:8080/api/analyze",
+            {
+                method: "POST",
 
-      message.textContent =
-        "This is a visual demo; it does not verify links yet.";
-    });
-  </script>
+                headers: {
+                    "Content-Type":
+                        "application/json"
+                },
+
+                body: JSON.stringify({
+                    url: url
+                })
+            }
+        );
+
+    const data =
+        await response.json();
+
+    document.getElementById(
+        "results"
+    ).textContent =
+        data.results;
+}
+
+</script>
 </body>
 </html>
