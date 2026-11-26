@@ -241,7 +241,8 @@ document.getElementById("analyze-form")
             await response.json();
 
         document.getElementById("results")
-            .textContent = data.results;
+            .textContent = document.getElementById("results").textContent="Risk Level: "
+          + data.riskLevel + "\nScore:" + data.score + "\n\n" + data.detials;
 
     } catch(error) {
 
@@ -250,7 +251,18 @@ document.getElementById("analyze-form")
                 "Error contacting backend: "
                 + error.message;
     }
-});
+      const results =
+      document.getElementById("results");
+       
+      if(data.riskLevel === "Low")
+      results.style.color = "#00ff88";
+       
+      else if(data.riskLevel === "Medium")
+      results.style.color = "#ffd500";
+       
+      else
+      results.style.color = "#ff4444";
+      });
 
 </script>
 </body>
